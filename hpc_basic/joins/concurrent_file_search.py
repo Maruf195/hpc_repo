@@ -40,7 +40,7 @@ def file_search(root, filename):
 def main():
     # Create a thread to start the file search from the specified root directory
     # Replace "/Users" and "README.md" with valid paths/filenames on your system
-    t = Thread(target=file_search, args=("/Users", "README.md"))  # Example for macOS
+    t = Thread(target=file_search, args=("C:/", "README.md"))  # Example for macOS
     # For Windows, use a valid directory: Thread(target=file_search, args=("C:/tools", "README.md"))
     t.start()  # Start the search thread
     t.join()  # Wait for the main search thread to complete
