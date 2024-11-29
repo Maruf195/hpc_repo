@@ -8,16 +8,16 @@ def task(name):
     
 if __name__ == "__main__":
     start_time = time.time()
-    p1= Process(target = task, args = ("process1",))
-    p2 = Process(target = task, args = ("process2",))
-    
-    p1.start()
-    p2.start()
-    
-    p1.join()
-    p2.join()
-    end_time= time.time()
-    
+    # Create Process
+    p = [Process(target=task, args=(f"Process-{i}",)) for i in range(3)]
+    # Start Process
+    for t in p:
+        t.start()
+    # Wait for process to complete
+    for t in p:
+        t.join()
+        
+    end_time = time.time()
     print("All process done")
     print(f"Elapsed time: {end_time-start_time}")
     

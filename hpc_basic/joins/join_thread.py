@@ -8,14 +8,16 @@ def task(name):
     
 if __name__ == "__main__":
     start_time = time.time()
-    p1= Thread(target = task, args = ("thread",)) # 2 second delay
-    p2 = Thread(target = task, args = ("thread",)) # 3 second delay
     
-    p1.start()
-    p2.start()
+    # Create threads
+    threads = [Thread(target=task, args=(f"Thread-{i}",)) for i in range(3)]
+    # Start threads
+    for t in threads:
+        t.start()
+    # Wait for threads to complete
+    for t in threads:
+        t.join()
     
-    p1.join()
-    p2.join()
     end_time= time.time()
     
     print("All Thread done")
